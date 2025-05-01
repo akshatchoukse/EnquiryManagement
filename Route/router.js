@@ -3,7 +3,7 @@ const router = express.Router()
 const StudentSchema = require("../Models/StudentSchema")
 
 router.post('/student', async(req,res)=>{
-    const newStudent = new StudentSchema()
+    const newStudent = new StudentSchema(req.body)
     await newStudent.save()
     res.send("Student Added Successfully")
 })
@@ -17,6 +17,6 @@ router.delete("/student/:id", async(req,res)=>{
 })
 router.put("/student/:id",async(req,res)=>{
     await StudentSchema.findByIdAndUpdate(req.params.id , req.body)
-    
+
 })
 module.exports = router
