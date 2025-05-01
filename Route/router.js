@@ -17,6 +17,7 @@ router.delete("/student/:id", async(req,res)=>{
 })
 router.put("/student/:id",async(req,res)=>{
     await StudentSchema.findByIdAndUpdate(req.params.id , req.body)
+    res.send("Data Updated Successfully")
 
 })
 module.exports = router
